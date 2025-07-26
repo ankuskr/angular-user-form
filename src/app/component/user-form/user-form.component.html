@@ -10,7 +10,7 @@
       <input formControlName="firstName" type="text" />
       <div
         class="error"
-        *ngIf="f['firstName'].touched && f['firstName'].invalid"
+        *ngIf="controls['firstName'].touched && controls['firstName'].invalid"
       >
         Required
       </div>
@@ -19,7 +19,10 @@
     <div>
       <label>Last Name*</label>
       <input formControlName="lastName" type="text" />
-      <div class="error" *ngIf="f['lastName'].touched && f['lastName'].invalid">
+      <div
+        class="error"
+        *ngIf="controls['lastName'].touched && controls['lastName'].invalid"
+      >
         Required
       </div>
     </div>
@@ -29,7 +32,10 @@
     <div>
       <label>Email*</label>
       <input formControlName="email" type="email" />
-      <div class="error" *ngIf="f['email'].touched && f['email'].invalid">
+      <div
+        class="error"
+        *ngIf="controls['email'].touched && controls['email'].invalid"
+      >
         Valid Email Required
       </div>
     </div>
@@ -40,7 +46,7 @@
       <div class="note">(Min. age should be 18 Years)</div>
       <div
         class="error"
-        *ngIf="f['dob'].touched && f['dob'].errors?.['tooYoung']"
+        *ngIf="controls['dob'].touched && controls['dob'].errors?.['tooYoung']"
       >
         Must be at least 18 years
       </div>
@@ -54,7 +60,7 @@
       <input formControlName="resStreet1" type="text" />
       <div
         class="error"
-        *ngIf="f['resStreet1'].touched && f['resStreet1'].invalid"
+        *ngIf="controls['resStreet1'].touched && controls['resStreet1'].invalid"
       >
         Required
       </div>
@@ -65,7 +71,7 @@
       <input formControlName="resStreet2" type="text" />
       <div
         class="error"
-        *ngIf="f['resStreet2'].touched && f['resStreet2'].invalid"
+        *ngIf="controls['resStreet2'].touched && controls['resStreet2'].invalid"
       >
         Required
       </div>
@@ -81,17 +87,13 @@
   <div class="row">
     <div>
       <label>Street 1</label>
-      <input
-        formControlName="permStreet1"
-        type="text"
-        [disabled]="f['sameAsResidential'].value"
-      />
+      <input formControlName="permStreet1" type="text" />
       <div
         class="error"
         *ngIf="
-          f['permStreet1'].touched &&
-          f['permStreet1'].invalid &&
-          !f['sameAsResidential'].value
+          controls['permStreet1'].touched &&
+          controls['permStreet1'].invalid &&
+          !controls['sameAsResidential'].value
         "
       >
         Required
@@ -100,17 +102,13 @@
 
     <div>
       <label>Street 2</label>
-      <input
-        formControlName="permStreet2"
-        type="text"
-        [disabled]="f['sameAsResidential'].value"
-      />
+      <input formControlName="permStreet2" type="text" />
       <div
         class="error"
         *ngIf="
-          f['permStreet2'].touched &&
-          f['permStreet2'].invalid &&
-          !f['sameAsResidential'].value
+          controls['permStreet2'].touched &&
+          controls['permStreet2'].invalid &&
+          !controls['sameAsResidential'].value
         "
       >
         Required
