@@ -1,0 +1,125 @@
+<form
+  *ngIf="userForm"
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  class="form-container"
+>
+  <div class="row">
+    <div>
+      <label>First Name*</label>
+      <input formControlName="firstName" type="text" />
+      <div
+        class="error"
+        *ngIf="f['firstName'].touched && f['firstName'].invalid"
+      >
+        Required
+      </div>
+    </div>
+
+    <div>
+      <label>Last Name*</label>
+      <input formControlName="lastName" type="text" />
+      <div class="error" *ngIf="f['lastName'].touched && f['lastName'].invalid">
+        Required
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label>Email*</label>
+      <input formControlName="email" type="email" />
+      <div class="error" *ngIf="f['email'].touched && f['email'].invalid">
+        Valid Email Required
+      </div>
+    </div>
+
+    <div>
+      <label>Date of Birth*</label>
+      <input formControlName="dob" type="date" />
+      <div class="note">(Min. age should be 18 Years)</div>
+      <div
+        class="error"
+        *ngIf="f['dob'].touched && f['dob'].errors?.['tooYoung']"
+      >
+        Must be at least 18 years
+      </div>
+    </div>
+  </div>
+
+  <h4>Residential Address</h4>
+  <div class="row">
+    <div>
+      <label>Street 1*</label>
+      <input formControlName="resStreet1" type="text" />
+      <div
+        class="error"
+        *ngIf="f['resStreet1'].touched && f['resStreet1'].invalid"
+      >
+        Required
+      </div>
+    </div>
+
+    <div>
+      <label>Street 2*</label>
+      <input formControlName="resStreet2" type="text" />
+      <div
+        class="error"
+        *ngIf="f['resStreet2'].touched && f['resStreet2'].invalid"
+      >
+        Required
+      </div>
+    </div>
+  </div>
+
+  <label class="checkbox-container">
+    <input type="checkbox" formControlName="sameAsResidential" />
+    Same as Residential Address
+  </label>
+
+  <h4>Permanent Address</h4>
+  <div class="row">
+    <div>
+      <label>Street 1</label>
+      <input
+        formControlName="permStreet1"
+        type="text"
+        [disabled]="f['sameAsResidential'].value"
+      />
+      <div
+        class="error"
+        *ngIf="
+          f['permStreet1'].touched &&
+          f['permStreet1'].invalid &&
+          !f['sameAsResidential'].value
+        "
+      >
+        Required
+      </div>
+    </div>
+
+    <div>
+      <label>Street 2</label>
+      <input
+        formControlName="permStreet2"
+        type="text"
+        [disabled]="f['sameAsResidential'].value"
+      />
+      <div
+        class="error"
+        *ngIf="
+          f['permStreet2'].touched &&
+          f['permStreet2'].invalid &&
+          !f['sameAsResidential'].value
+        "
+      >
+        Required
+      </div>
+    </div>
+  </div>
+
+  <div class="button-row">
+    <button type="submit" [disabled]="userForm.invalid">Submit</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+  </div>
+</form>

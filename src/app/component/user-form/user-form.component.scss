@@ -1,0 +1,107 @@
+.form-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  h4 {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.3rem;
+  }
+
+  .row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+
+    >div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #444;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='date'] {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+  }
+
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.25rem;
+  }
+
+  .error {
+    font-size: 0.8rem;
+    color: #e74c3c;
+    margin-top: 0.2rem;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .button-row {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+
+    button {
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type='submit'] {
+      background-color: #28a745;
+      color: #fff;
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+
+    button[type='button'] {
+      background-color: #dc3545;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container .row {
+    flex-direction: column;
+  }
+}
